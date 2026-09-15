@@ -418,6 +418,99 @@
       .section-card:nth-child(odd) .section-body, .section-card:nth-child(even) .section-body,
       .question:nth-child(odd), .question:nth-child(even) { background: transparent; }
     }
+
+    /* 響應式填表：只調整螢幕版面，不改動原表內容或 DOCX 匯出格式。 */
+    @media screen {
+      select { font: inherit; }
+      .hero { padding: 8px 12px 12px; }
+      .hero-tools { position: static; justify-content: flex-end; gap: 10px; min-height: 36px; margin-bottom: 4px; }
+      .hero-help-link { display: inline-flex; align-items: center; min-height: 36px; }
+      .icon-button { width: 36px; height: 36px; }
+      .reference-row:nth-child(2) { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+      .field-assessor { grid-column: 1 / -1; width: min(100%, 320px); }
+      .field input, .birth-control select { min-height: 36px; }
+      .birth-control { gap: 6px; align-items: center; }
+      .birth-date-era { flex: 0 0 62px; width: 62px; font-size: 1rem; }
+      .birth-date-ad { max-width: 230px; }
+      .birth-date-roc { flex: 0 1 auto; gap: 3px; align-items: center; }
+      .birth-date-roc input { flex: 0 0 60px; width: 60px; padding: 2px; }
+      .birth-date-roc select { flex: 0 0 46px; width: 46px; padding: 2px; }
+      .birth-date-roc span { font-size: 1rem; }
+      .age-control { align-items: center; }
+      .age-control #actualAge { flex: 1 1 auto; width: 100%; max-width: 230px; }
+      .age-date-popover { right: 0; left: auto; max-width: 100%; }
+      .summary-wrap { position: static; }
+      .score-table { font-size: .94rem; }
+      .score-table tr { grid-template-columns: minmax(0, 1fr) auto; column-gap: 6px; padding: 8px 4px; }
+      .score-table td { min-width: 0; }
+      .score-table .score-name { overflow-wrap: anywhere; }
+      .score-table td:nth-child(2), .score-table .status { font-size: .82rem; }
+      .actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .action-button { width: 100%; min-height: 44px; font-size: 1rem; }
+      .save-status { grid-column: 1 / -1; margin: 0; }
+      .section-head h2 { min-width: 0; overflow-wrap: anywhere; }
+      .question { display: grid; grid-template-columns: 22px 32px minmax(0, 1fr); column-gap: 6px; }
+      .question, .question.selected { padding-left: 2px; border-left: 3px solid transparent; }
+      .question.selected { border-left-color: #c18a2d; }
+      .question .score-check-visual { position: relative; width: 22px; height: 22px; margin-top: 1px; }
+      .question .score-check-visual::before { content: ""; position: absolute; inset: -5px; }
+      .question-number, .question-text { min-width: 0; }
+      .question-text { overflow-wrap: anywhere; }
+      .question .question-input { max-width: 100%; }
+      .weighted-badges { grid-column: 3; min-width: 0; justify-content: flex-start; }
+      .weight-badge { white-space: normal; overflow-wrap: anywhere; }
+      .item39-choice { white-space: normal; align-items: flex-start; }
+      .item39-choice > span:last-child { overflow: visible; text-overflow: clip; }
+      .item39-choice .visual-check { margin-top: 3px; }
+      button, select, .score-check-visual, .question-choice-label { touch-action: manipulation; }
+      button:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    }
+    @media screen and (max-width: 1000px) {
+      .app-shell { padding: 28px clamp(14px, 4vw, 40px) 40px; }
+    }
+    @media screen and (max-width: 900px) {
+      .reference-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .reference-row:nth-child(2) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .field { flex-direction: column; align-items: stretch; gap: 3px; }
+      .field-birth { grid-column: 1 / -1; }
+      .field-assessor { grid-column: auto; width: auto; }
+      .birth-control { flex: none; }
+      .age-control { flex: none; }
+      .age-date-popover { right: auto; left: 0; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: 3px; }
+      .score-table { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .item39-row { grid-template-columns: 1fr; }
+    }
+    @media screen and (max-width: 600px) {
+      .app-shell { padding: 16px 14px 28px; }
+      .hero { padding: 6px 10px 12px; }
+      h1 { font-size: clamp(1.25rem, 5vw, 1.55rem); }
+      .hero-tools { gap: 12px; margin-bottom: 6px; }
+      .icon-button { width: 44px; height: 44px; }
+      .hero-help-link { min-height: 44px; font-size: 1rem; }
+      .reference-row, .reference-row:nth-child(2) { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 12px; }
+      .field-birth, .field-assessor { grid-column: auto; }
+      .field input, .birth-control select { min-height: 44px; font-size: 16px; }
+      .birth-date-ad { max-width: none; }
+      .age-control #actualAge { max-width: none; }
+      .age-date-popover { width: min(100%, 260px); }
+      .question { grid-template-columns: 24px 32px minmax(0, 1fr); padding-top: 8px; padding-bottom: 8px; line-height: 1.65; }
+      .question .score-check-visual { width: 24px; height: 24px; margin-top: 1px; }
+      .question .score-check:checked + .score-check-visual::after { font-size: 17px; }
+      .question-choice-label { min-height: 36px; white-space: normal; }
+      .question .visual-check.small { flex: 0 0 22px; width: 22px; height: 22px; }
+      .question .question-input { height: 36px; font-size: 16px; }
+      .item39-options { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+      .item39-row { gap: 3px; margin-top: 8px; }
+      .item39-choice { align-items: center; }
+      .item39-choice .visual-check { margin-top: 0; }
+      .score-table, .actions { grid-template-columns: minmax(0, 1fr); }
+      .score-table tr { padding: 10px 4px; }
+      .score-table { font-size: 1rem; }
+      .score-note, .summary-highlight, .save-status { font-size: .88rem; }
+      textarea { font-size: 16px; }
+    }
+
   </style>
 </head>
 <body>
